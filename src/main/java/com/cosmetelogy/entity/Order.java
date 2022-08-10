@@ -1,13 +1,8 @@
 package com.cosmetelogy.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Order {
@@ -19,14 +14,9 @@ public class Order {
     private Person person;
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
-
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(
-//            name = "product_id_order_id",
-//            joinColumns = @JoinColumn(name = "order_id"),
-//            inverseJoinColumns = @JoinColumn(name = "product_id")
-//    )
-  //  private List<Product> products = new ArrayList<>();
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "product_id_order_id", joinColumns = @JoinColumn(name = "order_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
+    private List<Product> products = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -36,13 +26,13 @@ public class Order {
         this.id = id;
     }
 
-//    public List<Product> getProducts() {
-//        return products;
-//    }
-//
-//    public void setProducts(List<Product> products) {
-//        this.products = products;
-//    }
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
 
     public Person getPerson() {
         return person;

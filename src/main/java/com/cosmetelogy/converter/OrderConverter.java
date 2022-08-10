@@ -1,6 +1,7 @@
 package com.cosmetelogy.converter;
 
 import com.cosmetelogy.dto.OrderDto;
+import com.cosmetelogy.dto.ProductDto;
 import com.cosmetelogy.entity.Order;
 import org.springframework.stereotype.Component;
 
@@ -33,16 +34,16 @@ public class OrderConverter {
         if (order == null) {
             return null;
         }
-//        List<ProductDto> productDtos = productConverter.toFront(order.getProducts());
-        return new OrderDto(order.getId(), order.getOrderStatus(), null);
+        List<ProductDto> productDtos = productConverter.toFront(order.getProducts());
+        return new OrderDto(order.getId(), order.getOrderStatus(), productDtos);
     }
 
-    public List<Order> toLocal(List<OrderDto> orderDtos) {
-        if (orderDtos == null) {
+    public List<Order> toLocal(List<OrderDto> orders) {
+        if (orders == null) {
             return null;
         }
 
-        return orderDtos.stream()
+        return orders.stream()
                 .map(this::toLocal)
                 .toList();
     }

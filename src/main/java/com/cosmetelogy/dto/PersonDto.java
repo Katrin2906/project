@@ -6,8 +6,8 @@ public record PersonDto(Long id,
                         String name,
                         String gender,
                         Integer age,
-                        NoteDto noteDto,
+                        NoteDto note,
                         String number,
-                        List<OrderDto> orderDtos,
+                        List<OrderDto> orders,
                         List<VisitDto> visitDtos) {
 }

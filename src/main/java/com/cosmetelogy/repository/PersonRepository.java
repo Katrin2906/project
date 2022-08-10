@@ -6,7 +6,8 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import java.util.List;
 
 public interface PersonRepository extends PagingAndSortingRepository<Person, Long> {
-    List<Person> findAllByIdIn(List<Long> ids);
+
+    List<Person> findByIdIn(List<Long> ids);
 
 //    @Query("select p from Person p where p.orders.orderStatus=:orderStatus")
 //    List<Person> findByOrderStatus(OrderStatus orderStatus);
