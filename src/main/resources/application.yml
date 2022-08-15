@@ -3,3 +3,8 @@ spring:
     url: jdbc:postgresql://localhost:5432/cosmetology
     username: postgres
     password: docker
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        default_schema: public
