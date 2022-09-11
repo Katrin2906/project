@@ -16,7 +16,7 @@ public class ProductConverter {
         Product product = new Product();
 
         product.setId(dto.id());
-        product.setPrice(dto.price());
+        product.setProductPrice(dto.productPrice());
         product.setProductName(dto.productName());
         product.setProducer(dto.producer());
         product.setCompound(dto.compound());
@@ -30,15 +30,15 @@ public class ProductConverter {
             return null;
         }
 
-        return new ProductDto(product.getId(), product.getProductName(), product.getVolume(), product.getPrice(), product.getCompound(), product.getProducer());
+        return new ProductDto(product.getId(), product.getProductName(), product.getVolume(), product.getProductPrice(), product.getCompound(), product.getProducer());
     }
 
-    public List<Product> toLocal(List<ProductDto> productDtos) {
-        if (productDtos == null) {
+    public List<Product> toLocal(List<ProductDto> products) {
+        if (products == null) {
             return null;
         }
 
-        return productDtos.stream()
+        return products.stream()
                 .map(this::toLocal)
                 .toList();
     }
@@ -52,5 +52,4 @@ public class ProductConverter {
                 .map(this::toFront)
                 .toList();
     }
-
 }

@@ -34,8 +34,8 @@ public class PersonConverter {
 
     public Person toLocal(PersonDto dto) {
         Note note = noteConverter.toLocal(dto.note());
-        List<Visit> visits = visitConverter.toLocal(dto.visitDtos());
-        List<Order> orders = orderConverter.toLocal(dto.orders());
+        List<Visit> visits = visitConverter.toLocal(dto.visits());
+
 
         Person person = new Person();
         person.setId(dto.id());
@@ -45,6 +45,9 @@ public class PersonConverter {
         person.setNumber(dto.number());
         person.setNote(note);
         person.setVisits(visits);
+
+
+        List<Order> orders = orderConverter.toLocal(person, dto.orders());
         person.setOrders(orders);
 
         return person;

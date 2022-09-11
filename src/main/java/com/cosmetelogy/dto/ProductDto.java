@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public record ProductDto(Long id,
                          String productName,
                          Double volume,
-                         BigDecimal price,
+                         BigDecimal productPrice,
                          String compound,
                          String producer) {
 }

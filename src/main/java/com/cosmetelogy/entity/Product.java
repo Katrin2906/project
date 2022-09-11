@@ -16,7 +16,7 @@ public class Product {
     private String productName;
     private Double volume;
     @NotNull()
-    private BigDecimal price;
+    private BigDecimal productPrice;
     private String compound;
     private String producer;
     @ManyToMany(mappedBy = "products")
@@ -46,12 +46,12 @@ public class Product {
         this.volume = volume;
     }
 
-    public BigDecimal getPrice() {
-        return price;
+    public BigDecimal getProductPrice() {
+        return productPrice;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public void setProductPrice(BigDecimal productPrice) {
+        this.productPrice = productPrice;
     }
 
     public String getCompound() {

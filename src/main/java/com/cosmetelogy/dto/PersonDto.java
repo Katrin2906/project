@@ -9,5 +9,5 @@ public record PersonDto(Long id,
                         NoteDto note,
                         String number,
                         List<OrderDto> orders,
-                        List<VisitDto> visitDtos) {
+                        List<VisitDto> visits) {
 }
