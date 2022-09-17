@@ -5,5 +5,5 @@ import java.util.List;
 
 public record VisitDto(Long id,
                        LocalDateTime visitDate,
-                       List<ProcedureDto> procedureDtos) {
+                       List<ProcedureDto> procedures) {
 }

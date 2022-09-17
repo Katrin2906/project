@@ -1,18 +1,10 @@
 package com.cosmetelogy.entity;
 
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Procedure {
@@ -22,9 +14,6 @@ public class Procedure {
     @Enumerated(EnumType.STRING)
     private ProcedureName procedureName;
     private String description;
-    @ManyToOne
-    @JoinColumn(name = "employee_id")
-    private Employee employee;
     private BigDecimal price;
     @ManyToMany(mappedBy = "procedures")
     private List<Visit> visits = new ArrayList<>();
@@ -51,14 +40,6 @@ public class Procedure {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
     }
 
     public BigDecimal getPrice() {

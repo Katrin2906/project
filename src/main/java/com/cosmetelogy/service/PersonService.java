@@ -1,13 +1,10 @@
 package com.cosmetelogy.service;
-
-
 import com.cosmetelogy.converter.PersonConverter;
 import com.cosmetelogy.dto.PersonDto;
 import com.cosmetelogy.entity.Person;
 import com.cosmetelogy.repository.PersonRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 @Service
@@ -49,6 +46,4 @@ public class PersonService {
     public void setAge(Integer age, Long id) {
         personRepository.setAge(age, id);
     }
-
-
 }

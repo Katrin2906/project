@@ -4,7 +4,6 @@ import com.cosmetelogy.entity.Person;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
-
 import java.util.List;
 
 public interface PersonRepository extends PagingAndSortingRepository<Person, Long> {
@@ -20,8 +19,6 @@ public interface PersonRepository extends PagingAndSortingRepository<Person, Lon
     void deleteById(Long id);
 
     @Modifying
-    @Query("update Person p set p.age=?30 where p.id=?4")
+    @Query("update Person p set p.age=?1 where p.id=?2")
     void setAge(Integer age, Long id);
-
-
 }

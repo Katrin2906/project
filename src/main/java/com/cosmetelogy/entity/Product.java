@@ -1,7 +1,5 @@
 package com.cosmetelogy.entity;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -12,10 +10,8 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull()
     private String productName;
     private Double volume;
-    @NotNull()
     private BigDecimal productPrice;
     private String compound;
     private String producer;

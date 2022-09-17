@@ -1,5 +1,8 @@
 package com.cosmetelogy.entity;
 
+import com.sun.istack.NotNull;
+import org.checkerframework.checker.units.qual.Length;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,12 +12,14 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
     private String name;
     private String gender;
     private Integer age;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "note_id")
     private Note note;
+    @Length(min = 7)
     private String number;
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
     private List<Order> orders = new ArrayList<>();

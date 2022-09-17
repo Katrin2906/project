@@ -49,16 +49,5 @@ public class PersonController {
         personService.setAge(age, id);
     }
 
-//    @GetMapping("/name/{procedure_name}")
-//    public List<PersonDto> findAllByProcedureName(@PathVariable ProcedureName procedureName) {
-//        return personService.findAllByProcedureName(procedureName);
-//    }
-
-//    @GetMapping("/note{pregnant}")
-//    public List<PersonDto> findAllByNotePregnant(@PathVariable List<Long> ids) {
-//        return personService.findAllByNotePregnant(ids);
-//    }
-
-
 }
 
