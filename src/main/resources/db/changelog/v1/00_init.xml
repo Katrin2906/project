@@ -1,0 +1,129 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <changeSet author="karku (generated)" id="1663939615682-1">
+        <createTable tableName="person">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="person_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR"/>
+            <column name="gender" type="VARCHAR"/>
+            <column name="age" type="BIGINT"/>
+            <column name="number" type="VARCHAR"/>
+            <column name="note_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="karku (generated)" id="1663939615682-2">
+        <createTable tableName="note">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="note_pkey"/>
+            </column>
+            <column name="allergy" type="VARCHAR"/>
+            <column name="disease" type="VARCHAR"/>
+            <column name="pregnancy" type="BOOLEAN"/>
+            <column name="special_notes" type="VARCHAR"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="karku (generated)" id="1663939615682-3">
+        <createTable tableName="product">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="product_pkey"/>
+            </column>
+            <column name="product_name" type="VARCHAR"/>
+            <column name="volume" type="numeric"/>
+            <column name="product_price" type="numeric"/>
+            <column name="compound" type="TEXT"/>
+            <column name="producer" type="VARCHAR"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="karku (generated)" id="1663939615682-4">
+        <createTable tableName="procedure">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="procedure_pkey"/>
+            </column>
+            <column name="procedure_name" type="VARCHAR"/>
+            <column name="description" type="TEXT"/>
+            <column name="price" type="numeric"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="karku (generated)" id="1663939615682-5">
+        <createTable tableName="visit">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="visit_pkey"/>
+            </column>
+            <column name="visit_date" type="date"/>
+            <column name="person_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="karku (generated)" id="1663939615682-6">
+        <createTable tableName="visit_id_procedure_id">
+            <column name="visit_id" type="BIGINT"/>
+            <column name="procedure_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="karku (generated)" id="1663939615682-7">
+        <createTable tableName="order">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="order_pkey"/>
+            </column>
+            <column name="order_status" type="VARCHAR"/>
+            <column name="person_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="karku (generated)" id="1663939615682-8">
+        <createTable tableName="product_id_order_id">
+            <column name="order_id" type="BIGINT"/>
+            <column name="product_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="karku (generated)" id="1663939615682-9">
+        <createIndex indexName="fki_note_id" tableName="person">
+            <column name="note_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="karku (generated)" id="1663939615682-10">
+        <createIndex indexName="fki_visit_id" tableName="visit_id_procedure_id">
+            <column name="visit_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="karku (generated)" id="1663939615682-11">
+        <createIndex indexName="fki_procedure_id" tableName="visit_id_procedure_id">
+            <column name="procedure_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="karku (generated)" id="1663939615682-12">
+        <createIndex indexName="fki_person_id" tableName="order">
+            <column name="person_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="karku (generated)" id="1663939615682-13">
+        <createIndex indexName="fki_product_id" tableName="product_id_order_id">
+            <column name="product_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="karku (generated)" id="1663939615682-14">
+        <createIndex indexName="fki_order_id" tableName="product_id_order_id">
+            <column name="order_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="karku (generated)" id="1663939615682-15">
+        <addForeignKeyConstraint baseColumnNames="note_id" baseTableName="person" constraintName="note_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="note" validate="true"/>
+    </changeSet>
+    <changeSet author="karku (generated)" id="1663939615682-16">
+        <addForeignKeyConstraint baseColumnNames="order_id" baseTableName="product_id_order_id" constraintName="order_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="order" validate="true"/>
+    </changeSet>
+    <changeSet author="karku (generated)" id="1663939615682-17">
+        <addForeignKeyConstraint baseColumnNames="person_id" baseTableName="order" constraintName="person_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="person" validate="true"/>
+    </changeSet>
+    <changeSet author="karku (generated)" id="1663939615682-18">
+        <addForeignKeyConstraint baseColumnNames="person_id" baseTableName="visit" constraintName="person_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="person" validate="true"/>
+    </changeSet>
+    <changeSet author="karku (generated)" id="1663939615682-19">
+        <addForeignKeyConstraint baseColumnNames="procedure_id" baseTableName="visit_id_procedure_id" constraintName="procedure_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="procedure" validate="true"/>
+    </changeSet>
+    <changeSet author="karku (generated)" id="1663939615682-20">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="product_id_order_id" constraintName="product_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="product" validate="true"/>
+    </changeSet>
+    <changeSet author="karku (generated)" id="1663939615682-21">
+        <addForeignKeyConstraint baseColumnNames="visit_id" baseTableName="visit_id_procedure_id" constraintName="visit_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="visit" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
