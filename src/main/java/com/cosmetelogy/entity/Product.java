@@ -1,6 +1,9 @@
 package com.cosmetelogy.entity;
 
+import com.cosmetelogy.validation.BaseInfo;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +13,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank(groups = BaseInfo.class)
     private String productName;
     private Double volume;
     private BigDecimal productPrice;

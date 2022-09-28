@@ -1,6 +1,9 @@
 package com.cosmetelogy.entity;
 
+import com.cosmetelogy.validation.BaseInfo;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +16,7 @@ public class Order {
     @JoinColumn(name = "person_id")
     private Person person;
     @Enumerated(EnumType.STRING)
-
+    @NotBlank(groups = BaseInfo.class)
     private OrderStatus orderStatus;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "product_id_order_id", joinColumns = @JoinColumn(name = "order_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))

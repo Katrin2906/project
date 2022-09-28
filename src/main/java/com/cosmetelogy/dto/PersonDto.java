@@ -1,5 +1,7 @@
 package com.cosmetelogy.dto;
 
+import com.sun.istack.NotNull;
+
 import java.util.List;
 
 public record PersonDto(Long id,

@@ -63,20 +63,7 @@ class PersonControllerIT {
     }
 
     @Test
-    void findById() throws Exception {
-        //Given
-        String path = "/person/id";
-        MockHttpServletRequestBuilder getId = MockMvcRequestBuilders
-                .post(path)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(path));
-        String expected = "Sorry, we have some problem now. Please try later.";
-        //When
-
-        MvcResult mvcResult = mockMvc.perform(getId)
-                .andReturn();
-        //Then
-        Assertions.assertEquals(expected, mvcResult.getResponse().getContentAsString());
+    void findById() {
     }
 
     @Test

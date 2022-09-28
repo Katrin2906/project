@@ -1,7 +1,10 @@
 package com.cosmetelogy.entity;
 
 
+import com.cosmetelogy.validation.BaseInfo;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +15,7 @@ public class Procedure {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Enumerated(EnumType.STRING)
+    @NotBlank(groups = BaseInfo.class)
     private ProcedureName procedureName;
     private String description;
     private BigDecimal price;

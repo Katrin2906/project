@@ -1,16 +1,16 @@
 package com.cosmetelogy.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import com.cosmetelogy.validation.BaseInfo;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull(groups = BaseInfo.class)
     private String allergy;
     private String disease;
     private Boolean pregnancy;

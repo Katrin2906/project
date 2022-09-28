@@ -4,6 +4,8 @@ import com.cosmetelogy.dto.PersonDto;
 import com.cosmetelogy.dto.ProductDto;
 import com.cosmetelogy.service.PersonService;
 import com.cosmetelogy.service.ProductService;
+import com.cosmetelogy.validation.BaseInfo;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,12 +22,12 @@ public class PersonController {
     }
 
     @PostMapping("/save")
-    public Long save(@RequestBody PersonDto dto) {
+    public Long save(@RequestBody @Validated(BaseInfo.class) PersonDto dto) {
         return personService.save(dto);
     }
 
     @PostMapping("/save/product")
-    public Long save(@RequestBody ProductDto dto) {
+    public Long save(@RequestBody @Validated(BaseInfo.class) ProductDto dto) {
         return productService.save(dto);
     }
 
