@@ -5,6 +5,7 @@ import com.cosmetelogy.dto.ProductDto;
 import com.cosmetelogy.service.PersonService;
 import com.cosmetelogy.service.ProductService;
 import com.cosmetelogy.validation.BaseInfo;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,8 +23,10 @@ public class PersonController {
     }
 
     @GetMapping("/home")
-    public String home() {
-        return "home";
+    public String home(@RequestParam(required = false) String login, Model model) {
+        System.out.println("login is: " + login);
+        model.addAttribute("login", login);
+        return "home_page";
     }
 
     @PostMapping("/save")
