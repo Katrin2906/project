@@ -21,6 +21,11 @@ public class PersonController {
         this.productService = productService;
     }
 
+    @GetMapping("/home")
+    public String home() {
+        return "home";
+    }
+
     @PostMapping("/save")
     public Long save(@RequestBody @Validated(BaseInfo.class) PersonDto dto) {
         return personService.save(dto);
@@ -46,11 +51,11 @@ public class PersonController {
         personService.deleteById(id);
     }
 
-//    @PutMapping("/update/{id}")
-//    void setAge(@RequestParam Integer age, @RequestParam Long id) {
-//        personService.setAge(age, id);
-//    }
-//
+    @PutMapping("/update/{id}")
+    void setAge(@RequestParam Integer age, @RequestParam Long id) {
+        personService.setAge(age, id);
+    }
+
 //    @GetMapping("/status/{id}")
 //    public List<Person> findByOrderStatus(@RequestParam OrderStatus orderStatus, @RequestParam Long id) {
 //        return personService.findByOrderStatus(orderStatus, id);

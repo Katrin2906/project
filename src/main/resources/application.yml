@@ -3,10 +3,6 @@ spring:
     url: jdbc:postgresql://localhost:5432/cosmetology
     username: postgres
     password: docker
-server:
-  error:
-    include-message:always
-    include-binding-errors:always
 
   jpa:
     show-sql: true

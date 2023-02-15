@@ -12,13 +12,13 @@ public interface PersonRepository extends PagingAndSortingRepository<Person, Lon
 
     List<Person> findByIdIn(List<Long> ids);
 
-//    @Modifying
-//    @Query("select p from Person p where p.orders.orderStatus=:orderStatus")
-//    List<Person> findByOrderStatus(OrderStatus orderStatus, Long id);
-//
-//    @Modifying
-//    @Query("update Person p set p.age=?1 where p.id=?2")
-//    void setAge(Integer age, Long id);
+    @Modifying
+    @Query("select p from Person p where p.orders.orderStatus=:orderStatus")
+    List<Person> findByOrderStatus(OrderStatus orderStatus, Long id);
+
+    @Modifying
+    @Query("update Person p set p.age=?1 where p.id=?2")
+    void setAge(Integer age, Long id);
 
     List<Person> findAllByName(String name);
 
