@@ -2,6 +2,7 @@ package com.cosmetelogy.controller;
 
 import com.cosmetelogy.dto.PersonDto;
 import com.cosmetelogy.dto.ProductDto;
+import com.cosmetelogy.entity.Person;
 import com.cosmetelogy.service.PersonService;
 import com.cosmetelogy.service.ProductService;
 import com.cosmetelogy.validation.BaseInfo;
@@ -27,6 +28,19 @@ public class PersonController {
         System.out.println("login is: " + login);
         model.addAttribute("login", login);
         return "home_page";
+    }
+
+    @GetMapping("/persons")
+    public String persons(Model model, Person persons) {
+        model.addAttribute("persons", persons);
+        return "persons_page";
+    }
+
+    @PostMapping("/createPerson")
+    public String createPerson(@ModelAttribute PersonDto dto) {
+        System.out.println("person is : " + dto);
+        personService.save(dto);
+        return "redirect:/persons";
     }
 
     @PostMapping("/save")

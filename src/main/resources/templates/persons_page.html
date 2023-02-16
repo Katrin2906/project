@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Persons</title>
+    <link href="css/person_style.css" rel="stylesheet">
+</head>
+<body>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Age</th>
+        <th>Number</th>
+    </tr>
+    <th:block th:each="person : ${persons}">
+        <tr>
+            <td th:text="${person.name}"></td>
+            <td th:text="${person.name}"></td>
+            <td th:text="${person.age}"></td>
+            <td th:text="${person.number}"></td>
+        </tr>
+    </th:block>
+</table>
+<form action="/person/createPerson" method="post" th:object="${dto}">
+    <input name="name" type="text">
+    <input name="name" type="text">
+    <input name="age" type="text">
+    <input name="number" type="text">
+    <input type="submit" value="Create person">
+</form>
+</body>
+</html>
